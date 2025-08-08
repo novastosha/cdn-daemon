@@ -8,7 +8,7 @@ use std::{
     sync::mpsc::{Receiver, channel},
     time::{Duration, Instant},
 };
-const PUSH_INTERVAL: Duration = Duration::from_secs(5); // 5 seconds
+const PUSH_INTERVAL: Duration = Duration::from_secs(2 * 60 + 30); // 2 minutes and 30 seconds
 
 pub fn run_git_watcher(repo_path: String) {
     let log_file = setup_logger(&repo_path);
