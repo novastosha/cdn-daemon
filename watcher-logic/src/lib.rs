@@ -8,7 +8,7 @@ use std::{
     sync::mpsc::{Receiver, channel},
     time::{Duration, Instant},
 };
-const PUSH_INTERVAL: Duration = Duration::from_secs(4 * 60  + 30); // 4.5 minutes
+const PUSH_INTERVAL: Duration = Duration::from_secs(5); // 5 seconds
 
 pub fn run_git_watcher(repo_path: String) {
     let log_file = setup_logger(&repo_path);
@@ -130,7 +130,7 @@ fn run_git(repo_path: &str, log_file: &Path) {
     let script_path = std::env::var("CDN_REPO_SYNC_FILES_SCRIPT_PATH")
         .expect("CDN_REPO_SYNC_FILES_SCRIPT_PATH environment variable not set");
 
-    let mut parts = script_path.splitn(2, ';');
+    let mut parts = script_path.split( ';');
     let python_path = parts.next().expect("Missing Python path").replace("\"", "");
     let script_path = parts
         .next()
